@@ -1,10 +1,11 @@
 package view;
 
+import controller.calcCont;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import controller.calcCont;
 
 public class calcForm extends JPanel {
     private JComboBox<String> inputDropDown;
@@ -13,8 +14,9 @@ public class calcForm extends JPanel {
     private JTextField outputField;
     private JLabel inputLabel;
     private JLabel outputLabel;
+    private JButton convertButton;
 
-    public calcForm() {
+    public calcForm(ActionListener convertButtonListener) {
         JFrame f = new JFrame("Conversion Calculator");
 
         String[] types = {"Decimal", "Binary", "Octal", "HexaDecimal"};
@@ -42,7 +44,7 @@ public class calcForm extends JPanel {
         gbc.gridy = 0;
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
-        inputDropDown.setPreferredSize(new Dimension(200,40));
+        inputDropDown.setPreferredSize(new Dimension(200, 40));
         add(inputDropDown, gbc);
 
         gbc.gridx = 0;
@@ -56,27 +58,10 @@ public class calcForm extends JPanel {
         gbc.gridy = 1;
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
-        outputDropDown.setPreferredSize(new Dimension(200,40));
+        outputDropDown.setPreferredSize(new Dimension(200, 40));
         add(outputDropDown, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.gridwidth = 2;
-        gbc.gridheight = 1;
-        gbc.insets = new Insets(10, 10, 40, 10);
-        inputField.setPreferredSize(new Dimension(200,40));
-        add(inputField, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        gbc.gridwidth = 2;
-        gbc.gridheight = 1;
-        gbc.insets = new Insets(10, 10, 5, 10);
-        outputField.setPreferredSize(new Dimension(200,40));
-        add(outputField, gbc);
-
         inputLabel = new JLabel();
-        outputLabel = new JLabel();
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
@@ -85,16 +70,50 @@ public class calcForm extends JPanel {
         add(inputLabel, gbc);
 
         gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+        gbc.gridheight = 1;
+        gbc.insets = new Insets(10, 10, 5, 10);
+        inputField.setPreferredSize(new Dimension(200, 40));
+        add(inputField, gbc);
+
+        convertButton = new JButton("Convert");
+        convertButton.addActionListener(convertButtonListener);
+        gbc.gridx = 1;
         gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        convertButton.setPreferredSize(new Dimension(20, 30));
+        gbc.insets = new Insets(10, 10, 30, 10);
+        add(convertButton, gbc);
+
+        outputLabel = new JLabel();
+        gbc.gridx = 0;
+        gbc.gridy = 5;
         gbc.gridwidth = 2;
         gbc.gridheight = 1;
         gbc.insets = new Insets(5, 10, 5, 10);
         add(outputLabel, gbc);
 
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
+        gbc.gridheight = 1;
+        gbc.insets = new Insets(10, 10, 5, 10);
+        outputField.setPreferredSize(new Dimension(200, 40));
+        add(outputField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
+        gbc.gridheight = 1;
+        gbc.insets = new Insets(40, 10, 5, 10);
+        add(inputLabel, gbc);
+
         String fromType = (String) inputDropDown.getSelectedItem();
         String toType = (String) outputDropDown.getSelectedItem();
         calcCont.updateLabels(fromType, toType, inputLabel, outputLabel);
-
 
         ActionListener comboBoxListener = new ActionListener() {
             @Override
@@ -117,7 +136,14 @@ public class calcForm extends JPanel {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new calcForm();
+            // Create an instance of calcForm with a convert button listener
+            new calcForm(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Handle convert button action
+                    System.out.println("Convert button clicked");
+                }
+            });
         });
     }
 }
