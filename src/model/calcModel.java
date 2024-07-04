@@ -62,6 +62,25 @@ public class calcModel
                 return OctalTo.convertToHexaDecimal(input);
             }
         }
+        else if(from == "HexaDecimal")
+        {
+            if (to == "Decimal")
+            {
+                return HexaDecimalTo.convertToDecimal(input);
+            }
+            else if (to == "Binary")
+            {
+                return HexaDecimalTo.convertToBinary(input);
+            }
+            else if (to == "Octal")
+            {
+                return HexaDecimalTo.convertToOctal(input);
+            }
+            else if(to == "HexaDecimal")
+            {
+                return HexaDecimalTo.convertToHexaDecimal(input);
+            }
+        }
         return "wrong input";
     }
 }
