@@ -1,6 +1,7 @@
 package controller;
 
 import view.calcForm;
+import model.calcModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,6 +29,8 @@ public class calcCont {
                 String from = view.getInputDropDown().getSelectedItem().toString();
                 String to = view.getOutputDropDown().getSelectedItem().toString();
                 String input = view.getInputField().getText();
+                String result = calcModel.convert(from, to, input);
+                view.getOutputField().setText(result);
             }
         });
 
