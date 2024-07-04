@@ -51,11 +51,4 @@ public class calcCont {
         String toi = view.getOutputDropDown().getSelectedItem().toString();
         updateLabels(fromi, toi, view.getInputLabel(), view.getOutputLabel());
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            calcForm view = new calcForm();
-            new calcCont(view);
-        });
-    }
 }

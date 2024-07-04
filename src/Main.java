@@ -1,11 +1,15 @@
+import controller.calcCont;
+import view.calcForm;
+
 import javax.swing.*;
-import java.io.*;
-import java.util.*;
-import java.awt.*;
-public class Main extends JFrame
+
+public class Main
 {
     public static void main(String[] args)
     {
-        
+        SwingUtilities.invokeLater(() -> {
+            calcForm view = new calcForm();
+            new calcCont(view);
+        });
     }
 }
