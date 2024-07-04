@@ -1,5 +1,6 @@
 package model.conversion;
 import model.conversion.*;
+import java.lang.Math;
 
 public class BinaryTo
 {
