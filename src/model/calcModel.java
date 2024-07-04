@@ -24,6 +24,25 @@ public class calcModel
                 return DecimalTo.convertToDecimal(input);
             }
         }
-        return "fine";
+        else if (from == "Binary")
+        {
+            if (to == "Decimal")
+            {
+                return BinaryTo.convertToDecimal(input);
+            }
+            else if (to == "Binary")
+            {
+                return BinaryTo.convertToBinary(input);
+            }
+            else if (to == "Octal")
+            {
+                return BinaryTo.convertToOctal(input);
+            }
+            else if (to == "HexaDecimal")
+            {
+                return BinaryTo.convertToHexaDecimal(input);
+            }
+        }
+        return "wrong input";
     }
 }

@@ -4,14 +4,14 @@ public class DecimalTo
 {
     public static String convertToBinary(String input)
     {
-        int y = Integer.parseInt(input);
-        String s = "";
-        while(y>0)
+        int temp = Integer.parseInt(input);
+        String result = "";
+        while(temp>0)
         {
-            s = Integer.toString(y%2) + s;
-            y /= 2;
+            result = Integer.toString(temp%2) + result;
+            temp /= 2;
         }
-        return s.toString();
+        return result.toString();
     }
     public static String convertToOctal(String input)
     {
