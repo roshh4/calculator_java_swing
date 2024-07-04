@@ -1,11 +1,7 @@
 package view;
 
-import controller.calcCont;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class calcForm extends JPanel {
     private JComboBox<String> inputDropDown;
@@ -16,7 +12,7 @@ public class calcForm extends JPanel {
     private JLabel outputLabel;
     private JButton convertButton;
 
-    public calcForm(ActionListener convertButtonListener) {
+    public calcForm() {
         JFrame f = new JFrame("Conversion Calculator");
 
         String[] types = {"Decimal", "Binary", "Octal", "HexaDecimal"};
@@ -36,7 +32,7 @@ public class calcForm extends JPanel {
         gbc.gridy = 0;
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
-        gbc.insets = new Insets(30, 10, 10, 10); // Padding
+        gbc.insets = new Insets(10, 10, 10, 10); // Padding
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(l1, gbc);
 
@@ -78,12 +74,11 @@ public class calcForm extends JPanel {
         add(inputField, gbc);
 
         convertButton = new JButton("Convert");
-        convertButton.addActionListener(convertButtonListener);
+        convertButton.setPreferredSize(new Dimension(100, 40));
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
-        convertButton.setPreferredSize(new Dimension(20, 30));
         gbc.insets = new Insets(10, 10, 30, 10);
         add(convertButton, gbc);
 
@@ -94,7 +89,6 @@ public class calcForm extends JPanel {
         gbc.gridheight = 1;
         gbc.insets = new Insets(5, 10, 5, 10);
         add(outputLabel, gbc);
-
 
         gbc.gridx = 0;
         gbc.gridy = 6;
@@ -111,39 +105,38 @@ public class calcForm extends JPanel {
         gbc.insets = new Insets(40, 10, 5, 10);
         add(inputLabel, gbc);
 
-        String fromType = (String) inputDropDown.getSelectedItem();
-        String toType = (String) outputDropDown.getSelectedItem();
-        calcCont.updateLabels(fromType, toType, inputLabel, outputLabel);
-
-        ActionListener comboBoxListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String fromType = (String) inputDropDown.getSelectedItem();
-                String toType = (String) outputDropDown.getSelectedItem();
-                calcCont.updateLabels(fromType, toType, inputLabel, outputLabel);
-            }
-        };
-
-        inputDropDown.addActionListener(comboBoxListener);
-        outputDropDown.addActionListener(comboBoxListener);
-
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLayout(new BorderLayout());
-        f.add(this, BorderLayout.NORTH);
+        f.add(this, BorderLayout.CENTER);
         f.setSize(500, 600);
         f.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            // Create an instance of calcForm with a convert button listener
-            new calcForm(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // Handle convert button action
-                    System.out.println("Convert button clicked");
-                }
-            });
-        });
+    public JComboBox<String> getInputDropDown() {
+        return inputDropDown;
+    }
+
+    public JComboBox<String> getOutputDropDown() {
+        return outputDropDown;
+    }
+
+    public JTextField getInputField() {
+        return inputField;
+    }
+
+    public JTextField getOutputField() {
+        return outputField;
+    }
+
+    public JLabel getInputLabel() {
+        return inputLabel;
+    }
+
+    public JLabel getOutputLabel() {
+        return outputLabel;
+    }
+
+    public JButton getConvertButton() {
+        return convertButton;
     }
 }
