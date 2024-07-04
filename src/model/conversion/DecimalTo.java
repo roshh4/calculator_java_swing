@@ -2,6 +2,10 @@ package model.conversion;
 
 public class DecimalTo
 {
+    public static String convertToDecimal(String input)
+    {
+        return input;
+    }
     public static String convertToBinary(String input)
     {
         int temp = Integer.parseInt(input);
@@ -15,57 +19,53 @@ public class DecimalTo
     }
     public static String convertToOctal(String input)
     {
-        int y = Integer.parseInt(input);
-        String s = "";
-        while(y>0)
+        int temp = Integer.parseInt(input);
+        String result = "";
+        while(temp>0)
         {
-            s = Integer.toString(y%8) + s;
-            y /= 8;
+            result = Integer.toString(temp%8) + result;
+            temp /= 8;
         }
-        return s.toString();
+        return result.toString();
     }
     public static String convertToHexaDecimal(String input)
     {
-        int y = Integer.parseInt(input);
-        String s = "";
-        while(y>0)
+        int temp = Integer.parseInt(input);
+        String result = "";
+        while(temp>0)
         {
-            int q = y % 16;
-            if( q < 10)
-                s = Integer.toString(y%16) + s;
+            int var = temp % 16;
+            if( var < 10)
+                result = Integer.toString(temp%16) + result;
             else
             {
-                if (q == 10)
+                if (var == 10)
                 {
-                    s = "A" + s;
+                    result = "A" + result;
                 }
-                else if (q == 11)
+                else if (var == 11)
                 {
-                    s = "B" + s;
+                    result = "B" + result;
                 }
-                else if (q == 12)
+                else if (var == 12)
                 {
-                    s = "C" + s;
+                    result = "C" + result;
                 }
-                else if (q == 13)
+                else if (var == 13)
                 {
-                    s = "D" + s;
+                    result = "D" + result;
                 }
-                else if (q == 14)
+                else if (var == 14)
                 {
-                    s = "E" + s;
+                    result = "E" + result;
                 }
-                else if (q == 15)
+                else if (var == 15)
                 {
-                    s = "F" + s;
+                    result = "F" + result;
                 }
             }
-            y /= 16;
+            temp /= 16;
         }
-        return s.toString();
-    }
-    public static String convertToDecimal(String input)
-    {
-        return input;
+        return result.toString();
     }
 }

@@ -7,7 +7,11 @@ public class calcModel
     {
         if(from == "Decimal")
         {
-            if (to == "Binary")
+            if (to == "Decimal")
+            {
+                return DecimalTo.convertToDecimal(input);
+            }
+            else if (to == "Binary")
             {
                 return DecimalTo.convertToBinary(input);
             }
@@ -18,10 +22,6 @@ public class calcModel
             else if (to == "HexaDecimal")
             {
                 return DecimalTo.convertToHexaDecimal(input);
-            }
-            else if (to == "Decimal")
-            {
-                return DecimalTo.convertToDecimal(input);
             }
         }
         else if (from == "Binary")
