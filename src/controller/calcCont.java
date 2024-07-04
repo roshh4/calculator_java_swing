@@ -42,6 +42,7 @@ public class calcCont {
                 updateLabels(from, to, view.getInputLabel(), view.getOutputLabel());
             }
         };
+
         view.getInputDropDown().addActionListener(comboBoxListner);
         view.getOutputDropDown().addActionListener(comboBoxListner);
 
