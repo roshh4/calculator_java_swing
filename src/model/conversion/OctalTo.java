@@ -1,17 +1,18 @@
 package model.conversion;
 import model.conversion.*;
+import java.lang.Math;
 
 public class OctalTo {
-    public static String convertToDecimal(String x)
+    public static String convertToDecimal(String input)
     {
-        int y = Integer.parseInt(x);
-        int h = 0;
-        for(int i = 0; i < x.length(); i++)
+        int temp = Integer.parseInt(input);
+        int result = 0;
+        for(int i = 0; i < input.length(); i++)
         {
-            h = h + (y % 10) * (int)Math.pow(8,i);
-            y /=10;
+            result = result + (temp % 10) * (int)Math.pow(8,i);
+            temp /=10;
         }
-        return Integer.toString(h);
+        return Integer.toString(result);
     }
     public static String convertToBinary(String x)
     {
