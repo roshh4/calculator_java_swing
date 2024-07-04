@@ -1,8 +1,8 @@
 package model.conversion;
-import model.conversion.DecimalTo;
+import model.conversion.*;
 
 public class OctalTo {
-    public static String octalToDec(String x)
+    public static String convertToDecimal(String x)
     {
         int y = Integer.parseInt(x);
         int h = 0;
@@ -15,7 +15,17 @@ public class OctalTo {
     }
     public static String convertToBinary(String x)
     {
-        String y = octalToDec(x);
+        String y = convertToDecimal(x);
         return DecimalTo.convertToBinary(y);
+    }
+    public static String convertToOctal(String input)
+    {
+        return input;
+    }
+    public static String convertToHexaDecimal(String input)
+    {
+        String result = convertToDecimal(input);
+        return DecimalTo.convertToHexaDecimal(result);
+
     }
 }
