@@ -13,6 +13,8 @@ A Java Swing application that converts numbers between different number systems 
 - Real-time conversion
 - Input validation
 
+![image](https://github.com/user-attachments/assets/9c2fbcb7-333f-4a76-b582-bfce868314e1)
+
 
 ## Project Structure
 
